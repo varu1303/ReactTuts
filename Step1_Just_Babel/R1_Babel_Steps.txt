@@ -1,0 +1,27 @@
+// R1_Babel
+
+1) npm init 
+
+	-> to add package.json
+
+2) npm install --save-dev babel-cli babel-preset-env babel-preset-react
+
+	-> To use new features of JS and to be able to compile JSX to React functions
+
+3) .babelrc
+	
+	-> Let Babel know what we want to do (config file)
+
+  {
+  "presets": [
+    "env",
+    "react"
+  ]
+  }
+
+4) Include script tags of React and ReactDOM library to be able to use their methods.
+
+	"babel-compile": "babel src/var.js --out-file dist/bundle.js --watch"
+		
+		-> Compiles and create a file, which is what browser can understand.
+

@@ -1,0 +1,85 @@
+Webpack!
+
+--------- WAY MORE JS CODE NOW ! SO THE NEED AROSE. --------
+
+Earlier:
+
+index.html
+
+include all the dependencies using script tags.
+
+NOW:
+
+all our code - src/ directory
+all dependencies - node_modules 
+
+everything get combined into one bundle.js which is used in index.js! Webpack creates a
+graph of dependencies and include in bundle.js accordingly.
+
+------------------------ + and - ------------------------------
+
+
+- helps mangage JS appications.
+- adding script tags makes app slow, hard to manage, can run into errors
+- use ES6 import - exports to break our code in their own islands
+- Also dependencies can be downloaded by npm and integrated with app using bundler apps!
+
+--------------------- STEPS -----------------------------------
+1) npm init
+
+2) npm install --save-dev babel-cli babel-loader babel-preset-env babel-preset-react babel-plugin-transform-class-properties webpack webpack-cli
+
+	-> install babel cli and presets to be able to transpile code (default parameters plugin also)
+
+
+3) .babelrc
+
+{
+  "presets": [
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "transform-class-properties"
+  ]
+}
+
+4) .webpack.config.json 
+
+const path = require('path');
+
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    filename: "bundle.js",
+    path: path.join(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  }
+}
+
+5) Adding script tag in package.json for webpack!
+
+	Webpack will take care of babel's operations as well.
+
+"dev-build": "webpack --mode development --watch"
+
+6) Install npm package React and ReactDOM
+
+npm install react react-dom webpack
+
+
+
+
+
+	
+
